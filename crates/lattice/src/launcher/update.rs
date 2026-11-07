@@ -7,7 +7,7 @@ use serde::Deserialize;
 use sha2::{Digest, Sha256};
 use std::path::{Path, PathBuf};
 
-const LATEST: &str = "https://api.github.com/repos/DefNotIntoWaifus/lattice/releases/latest";
+const LATEST: &str = "https://api.github.com/repos/DefNotIntoWaifus/Lattice-Minecraft/releases/latest";
 const MAX_PROGRAM: u64 = 512 * 1024 * 1024;
 
 /// Which build of the program this is, as release files are named.

@@ -3,20 +3,32 @@
 A client for *Minecraft: Java Edition* servers, written from scratch in Rust.
 It doesn't launch, wrap or patch the official game: it speaks the network
 protocol (26.3, protocol 777), draws the world with its own renderer and has
-its own interface.
+its own interface. Textures, models and sounds come from Mojang's own files,
+which it downloads and checks on first start; none of them are in this repository.
 
-Not affiliated with Mojang or Microsoft.
+**Status:** playable on Minecraft 26.3 servers and on worlds it runs on your own computer.
+Survival and creative, every mob and block, the menus, villagers, command blocks, riding,
+weather, maps, signed chat and resource packs work. Some things are still missing or
+rough; [docs/ROADMAP.md](docs/ROADMAP.md) lists them, and the
+[issues](https://github.com/DefNotIntoWaifus/Lattice-Minecraft/issues) are the place to report more.
+
+| | |
+|---|---|
+| Plays | Minecraft: Java Edition 26.3 (protocol 777) |
+| Runs on | Linux (tested); Windows and macOS builds come from CI with each release and haven't been tried by hand yet |
+| Needs | A GPU with Vulkan, Metal or DirectX 12 |
 
 - Design: [docs/DESIGN.md](docs/DESIGN.md)
-- What works and what's next: [docs/ROADMAP.md](docs/ROADMAP.md)
 - What changed in each release: [CHANGELOG.md](CHANGELOG.md)
 - Making a release, and moving to a new Minecraft version: [docs/RELEASING.md](docs/RELEASING.md)
+- Helping out: [CONTRIBUTING.md](CONTRIBUTING.md)
 
 ## Install it
 
-Needs a GPU with Vulkan, Metal or DirectX 12. On Linux, download the archive from the
-[releases](https://github.com/DefNotIntoWaifus/lattice/releases), unpack it and run `install.sh`.
-From the source, with Rust 1.90+, it's `tools/install.sh`.
+On Linux, download `lattice-…-linux-x86_64.tar.gz` from the
+[latest release](https://github.com/DefNotIntoWaifus/Lattice-Minecraft/releases/latest), unpack it and
+run `install.sh`. On Windows and macOS, download that system's program from the same page and run it.
+From the source, with Rust 1.90 or newer, it's `tools/install.sh`.
 
 Lattice then appears in your application menu under Games, and on your desktop. The launcher
 tells you when there's a newer version and can install it. `uninstall.sh` removes the app; your
@@ -172,3 +184,12 @@ Development-only environment variables for scripted runs: `LATTICE_HOME`,
 - Protocol documentation: [minecraft.wiki](https://minecraft.wiki/w/Java_Edition_protocol) (CC BY-SA 3.0).
 - Game window typeface: [Jersey 15](https://github.com/scfried/soft-type-jersey), SIL Open Font License 1.1.
 - Typeface: [Atkinson Hyperlegible Next](https://github.com/googlefonts/atkinson-hyperlegible-next), SIL Open Font License (`crates/lattice/assets/fonts/OFL.txt`).
+
+## License
+
+Lattice's code is licensed under either of [Apache License 2.0](LICENSE-APACHE) or
+[MIT](LICENSE-MIT), at your option. The fonts in `crates/lattice/assets/fonts` keep their own
+SIL Open Font License. Mojang's server program and resource files, which Lattice downloads, are
+under Mojang's own terms, and the server's EULA has to be accepted before a local world starts.
+
+NOT AN OFFICIAL MINECRAFT PRODUCT. NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR MICROSOFT.

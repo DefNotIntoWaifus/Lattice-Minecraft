@@ -2,8 +2,9 @@
 # need Mojang's jars, so they're run before a release instead: see docs/RELEASING.md.
 name: Check
 
-# Run by hand or on a pull request, not every push: macOS minutes count ten times over on a private repository.
 on:
+  push:
+    branches: [main]
   pull_request:
   workflow_dispatch:
 

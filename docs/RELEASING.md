@@ -24,9 +24,10 @@ Add `--no-publish` to stop before anything leaves this computer.
 | `*.sha256` | Their checksums; the update button refuses anything that doesn't match |
 
 The launcher asks GitHub for the newest release when it starts, unless **Check for updates** is
-off under Settings, Interface. That only works if the repository is public: GitHub answers
-everyone else with "not found", and the launcher then says nothing. The address is at the top of
-`crates/lattice/src/launcher/update.rs`.
+off under Settings, Interface. It reads the public repository,
+[DefNotIntoWaifus/Lattice-Minecraft](https://github.com/DefNotIntoWaifus/Lattice-Minecraft); if that
+ever went private, GitHub would answer "not found" and the launcher would say nothing. The address is
+at the top of `crates/lattice/src/launcher/update.rs`.
 
 ## When a new Minecraft version comes out
 

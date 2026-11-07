@@ -1,0 +1,39 @@
+name: Something's wrong
+description: Lattice does something differently from the official game, or breaks
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What you did, what you saw, and what the official game does instead. Screenshots help (F2 saves one).
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Lattice version
+      description: Shown at the bottom of the launcher's Settings page, or in the release you downloaded.
+      placeholder: 0.2.0
+    validations:
+      required: true
+  - type: dropdown
+    id: where
+    attributes:
+      label: Where you were playing
+      options:
+        - A world on this computer
+        - A server
+    validations:
+      required: true
+  - type: input
+    id: system
+    attributes:
+      label: System and graphics card
+      placeholder: Arch Linux, AMD RX 7800 XT
+  - type: textarea
+    id: log
+    attributes:
+      label: Log
+      description: The end of the game window's log, from the launcher's Sessions page.
+      render: text

@@ -2,4 +2,7 @@
 *.part
 /dist
 __pycache__/
+# Claude Code session files
 /.claude/
+# Screenshots saved into the folder by the desktop
+/Screenshot_*.png
