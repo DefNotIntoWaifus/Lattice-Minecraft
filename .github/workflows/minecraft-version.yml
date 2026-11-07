@@ -1,0 +1,47 @@
+# Once a day: has Mojang released a new Minecraft? If so, open an issue saying what to do.
+name: New Minecraft version
+
+on:
+  schedule:
+    - cron: "17 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  issues: write
+  contents: read
+
+jobs:
+  look:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compare with Mojang's list
+        id: check
+        run: |
+          set +e
+          output=$(python3 -I tools/new-version.py --latest)
+          code=$?
+          echo "$output"
+          if [ "$code" = 3 ]; then
+            echo "new=$(echo "$output" | sed -E 's/.*newest release is ([^ ]+)\.$/\1/')" >> "$GITHUB_OUTPUT"
+          elif [ "$code" != 0 ]; then
+            exit "$code"
+          fi
+      - name: Open an issue, once
+        if: steps.check.outputs.new != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+          NEW: ${{ steps.check.outputs.new }}
+        run: |
+          title="Minecraft $NEW is out"
+          if gh issue list --state all --search "\"$title\" in:title" --json number --jq '.[0].number' | grep -q .; then
+            echo "Already noted."
+            exit 0
+          fi
+          gh issue create --title "$title" --body "Lattice needs moving to it. On a machine with the repository:
+
+          \`\`\`sh
+          tools/new-version.py $NEW
+          \`\`\`
+
+          That brings in the new game facts and reports what changed. docs/RELEASING.md has the rest."

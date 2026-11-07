@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <title>Lattice</title>
+  <rect x="8" y="8" width="240" height="240" rx="52" fill="#0E2740"/>
+  <path d="M128 40 204 84 128 128 52 84Z" fill="#2F6E9F"/>
+  <path d="M52 84 128 128V216L52 172Z" fill="#1D4366"/>
+  <path d="M204 84 128 128V216L204 172Z" fill="#14324F"/>
+  <path d="M128 40 204 84V172L128 216 52 172V84ZM52 84 128 128 204 84M128 128V216" fill="none" stroke="#8AD4F5" stroke-width="10" stroke-linejoin="round"/>
+  <g fill="#8AD4F5">
+    <circle cx="128" cy="40" r="13"/>
+    <circle cx="204" cy="84" r="13"/>
+    <circle cx="204" cy="172" r="13"/>
+    <circle cx="128" cy="216" r="13"/>
+    <circle cx="52" cy="172" r="13"/>
+    <circle cx="52" cy="84" r="13"/>
+  </g>
+  <circle cx="128" cy="128" r="22" fill="#FFC247"/>
+</svg>

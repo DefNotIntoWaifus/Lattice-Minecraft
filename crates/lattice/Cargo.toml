@@ -1,0 +1,39 @@
+[package]
+name = "lattice"
+description = "A from-scratch client for Minecraft: Java Edition servers"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+
+[dependencies]
+lattice-proto.workspace = true
+lattice-net.workspace = true
+lattice-auth.workspace = true
+lattice-data.workspace = true
+lattice-assets.workspace = true
+lattice-world.workspace = true
+lattice-render.workspace = true
+anyhow.workspace = true
+tracing.workspace = true
+tracing-subscriber.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+uuid.workspace = true
+base64.workspace = true
+cpal = "0.16"
+lewton = "0.10"
+glam.workspace = true
+image.workspace = true
+crossbeam-channel.workspace = true
+rayon.workspace = true
+rand.workspace = true
+egui = "0.37"
+egui-winit = { version = "0.37", features = ["accesskit"] }
+winit = "0.30"
+toml = "1"
+directories = "6"
+webbrowser = "1"
+ureq.workspace = true
+sha1.workspace = true
+sha2.workspace = true

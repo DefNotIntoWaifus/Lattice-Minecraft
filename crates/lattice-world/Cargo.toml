@@ -1,0 +1,19 @@
+[package]
+name = "lattice-world"
+description = "Client-side world model: chunks, light, registries, entities, player physics"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+
+[dependencies]
+lattice-proto.workspace = true
+lattice-data.workspace = true
+thiserror.workspace = true
+tracing.workspace = true
+uuid.workspace = true
+glam.workspace = true
+
+[dev-dependencies]
+serde.workspace = true
+serde_json.workspace = true

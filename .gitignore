@@ -1,0 +1,5 @@
+/target
+*.part
+/dist
+__pycache__/
+/.claude/

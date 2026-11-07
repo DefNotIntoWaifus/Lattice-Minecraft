@@ -1,0 +1,42 @@
+# Builds the program for each system when a version tag arrives, and adds it to that release.
+name: Release builds
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { os: windows-latest, target: windows-x86_64, ext: ".exe" }
+          - { os: macos-latest, target: macos-arm64, ext: "" }
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - name: Build
+        run: cargo build --release -p lattice
+      - name: Package
+        shell: bash
+        run: |
+          version="${GITHUB_REF_NAME#v}"
+          name="lattice-${version}-${{ matrix.target }}${{ matrix.ext }}"
+          cp "target/release/lattice${{ matrix.ext }}" "$name"
+          if command -v sha256sum >/dev/null; then sha256sum "$name" > "$name.sha256"; else shasum -a 256 "$name" > "$name.sha256"; fi
+          echo "ASSET=$name" >> "$GITHUB_ENV"
+      - name: Wait for the release, then add to it
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for try in $(seq 1 30); do
+            gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1 && break
+            sleep 20
+          done
+          gh release upload "$GITHUB_REF_NAME" "$ASSET" "$ASSET.sha256" --clobber
