@@ -11,7 +11,9 @@ both: "Lattice 0.2.0 for Minecraft 26.3".
 
 That sets the version, builds, runs the unit tests and every scenario on a real server, packages
 the Linux build into `dist/`, commits, tags and creates the GitHub release. The tag starts
-`.github/workflows/release.yml`, which adds the Windows and macOS builds a few minutes later.
+`.github/workflows/release.yml`, which adds the Windows and macOS builds a few minutes later. If
+GitHub didn't start it (it can skip a tag pushed with new workflow files), run
+`gh workflow run release.yml -f tag=v0.3.0`.
 
 Add `--no-publish` to stop before anything leaves this computer.
 
